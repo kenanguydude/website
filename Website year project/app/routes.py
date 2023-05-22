@@ -24,6 +24,14 @@ def all_food():
 def info():
     return render_template("info.html")
 
+@app.route("/food/<int:id>")
+def food(id):
+    conn = sqlite3.connect('database/samoanfood.db')
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM Food WHERE id=?",(id,))
+    foodresult = cur.fetchone()
+    return render_template("food.html", foodresult=foodresult)
+
 if __name__ == "__main__":
     app.run(debug=True)
 

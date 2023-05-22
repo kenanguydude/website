@@ -2,8 +2,10 @@
 {% block content %}
 <a href="/all_food"> <- Go back</a>
 
-<h2>{{food[1]}} pizza</h2>
+{%for food in foodresult%}
+<h2>{{food}}</h2>
 
-<p>{{food[2]}}</p>
+<p>{{food}}</p>
+{% endfor %}
 
 {% endblock %}
