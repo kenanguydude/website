@@ -1,0 +1,6 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% for item in results %}
+    <h2><a href="/food/{{item[0]}}">{{ item[1] }}</a></h2><br/>
+{% endfor %}
+{% endblock %}

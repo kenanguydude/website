@@ -11,9 +11,14 @@ app = Flask(__name__)
 def home():
     return render_template("home.html")
 
-@app.route("/food")
-def food():
-    return render_template("food.html")
+@app.route("/all_food")
+def all_food():
+    conn = sqlite3.connect('database/samoanfood.db')
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM Food")
+    results = cur.fetchall()
+    print(results)
+    return render_template("all_food.html", title="all_food", results=results)
 
 @app.route("/info")
 def info():
